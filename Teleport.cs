@@ -16,9 +16,9 @@ namespace Teleport;
 public class Teleport : SonsMod
 {
     private SContainerOptions container;
-    private SLabelOptions[] text = new SLabelOptions[30];
+    private SLabelOptions[] text = new SLabelOptions[30];    
 
-    private List<PlayerNameUiLink> _players = new List<PlayerNameUiLink>();
+    private List<PlayerNameUiLink> _players = new List<PlayerNameUiLink>();    
 
     private bool _tp = false;
     private int _offset = 0;
@@ -31,7 +31,7 @@ public class Teleport : SonsMod
 
     private void Update()
     {
-        if (LocalPlayer.IsInWorld && !PauseMenu.IsActive && !TheForest.UI.Multiplayer.ChatBox.IsChatOpen && !DebugConsole.Instance._showConsole)
+        if (LocalPlayer.IsInWorld && !PauseMenu.IsActive && !TheForest.UI.Multiplayer.ChatBox.IsChatOpen && !DebugConsole.Instance._showConsole)  
         {
             // close menu after 10 seconds
             if (_tp)
@@ -42,7 +42,7 @@ public class Teleport : SonsMod
             }
 
             // check tp, or tp to the mountain
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.P))  
             {
                 if (!_tp)
                     CheckTP();
@@ -51,8 +51,8 @@ public class Teleport : SonsMod
             }
 
             // initiate teleport if there is a target player
-            int _inputInt = Input.inputString.ToCharArray().FirstOrDefault() - '0';
-            if (_tp && _inputInt >= 1 && _inputInt <= listCount && _inputInt + _offset <= _players.Count())
+            int _inputInt = Input.inputString.ToCharArray().FirstOrDefault() - '0';  
+            if (_tp && _inputInt >= 1 && _inputInt <= listCount && _inputInt + _offset <= _players.Count())  
                 TP(Input.inputString.ToCharArray()[0] - '0' - 1);
 
             if (_tp && Input.mouseScrollDelta.y != 0)
